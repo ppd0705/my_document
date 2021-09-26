@@ -14,12 +14,8 @@ title: Welcome to Slidev
 # 期现套利策略介绍及实现
 
 彭沛东 
-2021-09-19
+2021-09-24
 
-
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
 
 ---
 
@@ -37,7 +33,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
 # 现货
 
 ## 现货:  通常指实物
-- 如农作物大豆、玉米;
+- 如农作物大豆、玉米
 - 如数字货币BTC、ETH
 
 <br>
@@ -45,8 +41,8 @@ The last comment block of each slide will be treated as slide notes. It will be 
 ## 现货交易:  一般以一手交钱一手交货或者以物换物的方式
 <br>
 
-- 比如10RMB买2斤大豆、50000USD买1BTC
-- 比如2斤大豆换3斤玉米、100ETH个换7BTC
+- 比如 10RMB 买2斤大豆、50000USD 买 1BTC
+- 比如2斤大豆换3斤玉米、100ETH 换 7BTC
 
 ---
 
@@ -85,9 +81,10 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 根据合约价格，按一定比率交纳少量资金作为履行合约的财力担保，即可参与合约的买卖
 
-假如当前BTC价格为50000U/BTC，100倍杠杆做多1BTC，则保证金为500U
+假如当前BTC价格为50000U/BTC，100倍杠杆做多1BTC，则初始保证金为500U
 - 价格涨1%即50500U，盈利100%即500U
 - 价格跌1%即49500U，亏损100%即500U
+
 ---
 
 # 期现关系
@@ -109,7 +106,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 - 当期货价格高于现货且价差较大时（价差记为为 S1）买入现货同时做空等量期货
 - 后续当价差缩小时（价差记为 S2），卖出现货同时平空期货
-- 假设交易手续费为F，则盈亏比为：S1 - S2 - F
+- 假设交易手续费为F，则盈亏为：S1 - S2 - F
 
 <br>
 
@@ -132,19 +129,15 @@ XEC-USDT 期现价格快照（价差 **9%**、资金费率 **+0.375%**）
 <br>
 
 ## 量化策略 = 数据 + 算法
-- 数据：通过交易所接口获取的深度数据、余额数据等
+- 数据：通过交易所接口获取的市场价格数据、账户余额数据等
 - 算法：通过交易所接口实现上文说到的策略逻辑
-
-<!--
-调包侠就是我~
--->
 
 ---
 
 # 策略实现
 
 ##  Order
-订单，交易的基本单位，包含价格、数量、成交状态等信息
+订单，交易的基本单位，包含ID、价格、数量、成交状态等信息
 
 ##  Proposal
 提案，策略的基本单位，基于输入数据判断是否开仓、平仓来创建Order，并根据Order的状态来切换自己的状态
@@ -155,7 +148,8 @@ XEC-USDT 期现价格快照（价差 **9%**、资金费率 **+0.375%**）
 
 # 策略流程图
 
-![flow_chart](/spa_flow_chart.png)
+
+<img src="/spa_flow_chart.png" />
 
 ---
 
@@ -171,8 +165,9 @@ XEC-USDT 期现价格快照（价差 **9%**、资金费率 **+0.375%**）
 ---
 
 # 策略结果
+
 <div class="grid grid-cols-2">
-<div class="mx-140">
+<div class="-mx-35">
 ```mermaid {scale: 0.8}
 pie title 成交占比
 "xecusdt": 717566.7
@@ -183,7 +178,7 @@ pie title 成交占比
 "other": 2176617.0
 ```
 </div>
-<div class="mx-140">
+<div class="-mx-35">
 ```mermaid {scale: 0.8}
 pie title 盈利占比
 "xecusdt": 3362.6
